@@ -1,0 +1,78 @@
+/* adthrive.css */
+
+img:is([sizes="auto" i],[sizes^="auto," i]) {
+    contain-intrinsic-size: 3000px 1500px;
+}
+
+.adthrive-ad {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    overflow-x: visible;
+    clear: both;
+    line-height: 0;
+}
+
+.adthrive-sidebar-1 {
+    min-height: 250px !important;
+}
+
+.adthrive-content,
+.adthrive-header {
+    grid-column: 2/-2;
+}
+
+body.adthrive-device-desktop .adthrive-content + .card--arch {
+    grid-column: 2/10;
+}
+
+.adthrive-comscore {
+    display: none !important;
+}
+
+.adthrive-sticky-outstream.adthrive-sticky-outstream-desktop {
+    bottom: 170px !important;
+}
+
+.adthrive-sticky-outstream.adthrive-sticky-outstream-mobile {
+    bottom: 32px !important;
+}
+
+.adthrive-ad-cls > div,
+.adthrive-ad-cls > iframe {
+    flex-basis: auto !important;
+}
+
+body.archive .adthrive-content {
+    grid-column: 1/-1;
+}
+
+.adthrive-collapse-mobile-background {
+    background-color: #f9f2ec !important;
+}
+
+.adthrive-top-collapse-close > svg > * {
+    stroke: #000;
+    font-family: sans-serif;
+}
+
+.adthrive-top-collapse-wrapper-video-title,
+.adthrive-top-collapse-wrapper-bar a a.adthrive-learn-more-link {
+    color: black !important;
+}
+
+body.home .adthrive-content {
+    grid-column: 1/-1;
+}
+
+body.adthrive-device-desktop .adthrive {
+    margin-bottom: 25px;
+}
+
+.adthrive-sidebar.adthrive-stuck {
+    margin-top: 85px;
+}
+
+.adthrive-sticky-sidebar > div {
+    top: 85px !important;
+}
