@@ -1,4 +1,7 @@
 <?php
+
+use yii\log\FileTarget;
+
 $params = array_merge(
     require __DIR__ . '/../../common/config/params.php',
     require __DIR__ . '/../../common/config/params-local.php',
@@ -28,9 +31,17 @@ return [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
                 [
-                    'class' => \yii\log\FileTarget::class,
+                    'class' => FileTarget::class,
                     'levels' => ['error', 'warning'],
                 ],
+                [
+                    'class' => FileTarget::class,
+                    'levels' => ['info', 'error', 'warning'],
+                    'logFile' => '@app/runtime/logs/api_chatGPT.log',
+                    'logVars' => [],
+                    'categories' => ['api-chat-gpt'],
+                    'enableRotation' => true,
+                ]
             ],
         ],
         'errorHandler' => [

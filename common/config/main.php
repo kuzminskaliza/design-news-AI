@@ -1,4 +1,7 @@
 <?php
+
+use common\components\api\chatGPT\ChatGPTApiClient;
+
 return [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -15,6 +18,11 @@ return [
             'username' => 'admin',
             'password' => 'admin',
             'charset' => 'utf8',
+        ],
+        'chatGPT' => [
+            'class' => ChatGPTApiClient::class,
+            'baseUrl' => '',
+            'token' => '',
         ],
     ],
 ];

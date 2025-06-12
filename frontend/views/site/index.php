@@ -72,9 +72,11 @@ $this->title = 'Web Design Posts';
                                             <?= $article->title ?>
                                         </h3>
                                     </a>
+                                    <a href="<?= Url::to(['site/article', 'id' => $article->id]) ?>" class="inline-block">
                                     <p class="text-white/70 font-medium mt-5 text-[17px] leading-140">
                                         <?= mb_substr($article->content, 0, 120) ?>...
                                     </p>
+                                    </a>
                                 </div>
                             </div>
                             <div class="flex items-center justify-between">
