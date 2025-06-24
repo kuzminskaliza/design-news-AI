@@ -2,11 +2,13 @@
 
 /** @var yii\web\View $this */
 /** @var common\models\Category $category */
+
 /** @var common\models\Article[] $articles */
 
 use yii\helpers\Html;
 use yii\helpers\StringHelper;
 use yii\helpers\Url;
+use yii\widgets\LinkPager;
 
 $this->title = 'Web Design Posts';
 ?>
@@ -30,8 +32,9 @@ $this->title = 'Web Design Posts';
         <div class="grid grid-cols-12 gap-8">
             <?php foreach ($articles as $article): ?>
                 <div class="col-span-12 md:col-span-6 xl:col-span-4 mobile-hidden">
-                    <article class="article-box w-full relative article-gradient h-full border border-lighter-gray rounded-3xl js-article-link"
-                             data-href="<?= Html::encode(Url::to(['site/article', 'id' => $article->id])) ?>">
+                    <article
+                            class="article-box w-full relative article-gradient h-full border border-lighter-gray rounded-3xl js-article-link"
+                            data-href="<?= Html::encode(Url::to(['site/article', 'id' => $article->id])) ?>">
                         <div class="article-box-border h-full w-full rounded-3xl">
                             <div class="article-box-inside-border rounded-3xl bg-dark"></div>
                         </div>
@@ -39,7 +42,7 @@ $this->title = 'Web Design Posts';
                             <div class="space-y-4">
                                 <a href="<?= Html::encode(Url::to(['site/article', 'id' => $article->id])) ?>"
                                    class="image-feature w-full h-[240px] rounded-3xl">
-                                    <img src="/template/img/imageForHeader.svg"
+                                    <img src='<?= $article->image_path ?>'
                                          alt="<?= Html::encode($article->title) ?>"
                                          class="attachment-large size-large w-full h-full object-cover rounded-3xl"
                                          loading="lazy">
@@ -84,26 +87,18 @@ $this->title = 'Web Design Posts';
             <?php endforeach; ?>
 
             <div class="col-span-12">
-                <div class="pagination">
-                    <div class="pagination pagination-home">
-                        <ul>
-                            <li><a href="#" class="page-numbers current"
-                                   data-google-interstitial="false">1</a></li>
-                            <li><a href="#" class="page-numbers"
-                                   data-google-interstitial="false">2</a></li>
-                            <li><a href="#" class="page-numbers"
-                                   data-google-interstitial="false">3</a></li>
-                            <li>...</li>
-                            <li><a href="#" class="page-numbers"
-                                   data-google-interstitial="false">370</a></li>
-                            <li><a href="#" class="page-numbers"
-                                   data-google-interstitial="false">371</a></li>
-                            <li><a href="#" class="page-numbers"
-                                   data-google-interstitial="false">372</a></li>
-                        </ul>
-                        <a class="btn-next" href="#"
-                           data-google-interstitial="false">Next Page</a>
-                    </div>
+                <div class="pagination pagination-home">
+                    <?= LinkPager::widget([
+                        'pagination' => $pagination,
+                        'options' => ['class' => 'pagination pagination-home'],
+                        'linkContainerOptions' => ['tag' => 'li'],
+                        'linkOptions' => ['class' => 'page-numbers', 'data-google-interstitial' => 'false'],
+                        'activePageCssClass' => 'current',
+                        'disabledPageCssClass' => 'disabled',
+                        'prevPageLabel' => false,
+                        'nextPageLabel' => 'Next Page',
+                        'nextPageCssClass' => 'btn-next',
+                    ]) ?>
                 </div>
             </div>
         </div>

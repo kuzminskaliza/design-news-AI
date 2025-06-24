@@ -73,7 +73,7 @@ class ChatGPTApiService implements ChatGPTEndpointConstInterface
         $article->category_id = $categoryId;
         $article->status_id = 1;
         $article->reading_time = $reading;
-        $article->image_path = '/template/img/imageForHeader.svg';
+        $article->image_path = '/template/img/uiDesign/34.jpeg';
 
         if (!$article->save()) {
             Yii::error("Failed to save article: " . json_encode($article->errors), __METHOD__);
